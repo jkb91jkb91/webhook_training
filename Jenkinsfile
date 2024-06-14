@@ -29,7 +29,9 @@ pipeline {
                      sh '''
                     echo shiit
                     PAYLOAD=$payload
-                    [[ "${PAYLOAD}" == *pull* ]] && echo ZNALAZLEM
+                    if [ "${PAYLOAD}" == *pull* ]; then
+                      echo ZNALAZLEM
+                    fi
                     
                     echo shiit
                     '''
