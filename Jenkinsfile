@@ -19,11 +19,11 @@ pipeline {
     }
     stages {
         stage('Some step') {
-          when {
-                expression {
-                    return false
-                }
-            }
+         // when {
+        //        expression {
+        //            return false
+        //        }
+        //    }
             steps {
                 script {
                      sh '''
