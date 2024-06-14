@@ -1,35 +1,28 @@
 pipeline {
     agent any
-
     triggers {
         GenericTrigger(
             genericVariables: [
-                [key: 'action', value: '$.action']
+                [key: 'ref', value: '$.ref']
             ],
-            causeString: 'Triggered on $action',
-            token: 'your-token',
+            causeString: 'Triggered on $ref',
+            token: 'abc123',
+            tokenCredentialId: '',
             printContributedVariables: true,
             printPostContent: true,
-            silentResponse: false
+            silentResponse: false,
+            shouldNotFlatten: false,
+            regexpFilterText: '$ref',
+            regexpFilterExpression: 'refs/heads/' + BRANCH_NAME
         )
     }
-
     stages {
-        stage('Check Trigger Type') {
+        stage('Some step') {
             steps {
                 script {
-                    // Odczytanie typu wyzwalacza
-                    def triggerType = env.action
-
-                    echo "Trigger Type: ${triggerType}"
-
-                    // Sprawdzenie, czy istnieje właściwość 'ref'
-                    if (env.payload) {
-                        echo "Ref: ${env.payload}"
-                    }
+                    echo "Trigger Type: ${ref}"
                 }
             }
         }
-        // Pozostałe etapy...
     }
 }
