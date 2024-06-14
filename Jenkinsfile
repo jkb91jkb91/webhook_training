@@ -24,7 +24,9 @@ pipeline {
         stage('Some step') {
             steps {
                 script {
-                    echo "Received Payload: ${params.payload}"
+                    // Odczytaj treść żądania (payload) z parametrów
+                    def payloadContent = params.payload
+                    echo "Received Payload: ${payloadContent}"
                 }
             }
         }
