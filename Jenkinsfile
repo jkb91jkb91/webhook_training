@@ -28,7 +28,7 @@ pipeline {
                 script {
                      sh '''
                     echo shiit
-                    PAYLOAD="${payload}"
+                    "${payload}" > payload.txt
                     if [ "${PAYLOAD}" == *"pushed_at"* ]; then
                       echo ZNALAZLEM
                     else
