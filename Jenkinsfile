@@ -28,9 +28,9 @@ pipeline {
                 script {
                      sh '''
                     echo shiit
-                    "${payload}" > ./p.txt
+                    PAYLOAD="$payload" 
                     echo wpisane
-                    grep -q "pushed_at" ./p.txt && echo "Znalazłem 'pushed_at' w pliku payload.txt" || echo "Nie znaleziono 'pushed_at' w pliku payload.txt"  
+                    echo "$PAYLOAD" | grep -q "pushed_at" ./p.txt && echo "Znalazłem 'pushed_at' w pliku payload.txt" || echo "Nie znaleziono 'pushed_at' w pliku payload.txt"  
                     echo shiit
                     '''
                 }
