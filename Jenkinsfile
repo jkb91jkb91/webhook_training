@@ -6,7 +6,9 @@ pipeline {
     triggers {
         GenericTrigger(
             genericVariables: [
-                [key: 'payload', value: '$.payload'] // Przekazujemy payload jako zmienną
+                 genericVariables: [
+      [key: 'ref', value: '$.ref']
+
             ],
         )
     }
@@ -16,11 +18,8 @@ pipeline {
     stages {
         stage('Some step') {
             steps {
-                script {
-                    // Odczytaj treść żądania (payload) z parametrów
-                    def payloadContent = params.payload
-                    echo "Received Payload: ${payloadContent}"
-                }
+                sh "echo $ref"
+       
             }
         }
     }
