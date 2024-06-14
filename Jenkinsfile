@@ -9,7 +9,6 @@ pipeline {
                 [key: 'payload', value: '$.payload'] // Przekazujemy payload jako zmienną
             ],
             causeString: 'Triggered on $ref',
-            token: 'abc123',
             tokenCredentialId: '',
             printContributedVariables: true,
             printPostContent: true,
