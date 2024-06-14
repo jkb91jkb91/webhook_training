@@ -29,12 +29,7 @@ pipeline {
                      sh '''
                     echo shiit
                     "${payload}" > payload.txt
-                    if [ "${PAYLOAD}" == *"pushed_at"* ]; then
-                      echo ZNALAZLEM
-                    else
-                      echo NIE_ZNALAZLEM
-                    fi
-                    
+                    grep -q "pushed_at" payload.txt && echo "Znalazłem 'pushed_at' w pliku payload.txt" || echo "Nie znaleziono 'pushed_at' w pliku payload.txt"  
                     echo shiit
                     '''
                 }
