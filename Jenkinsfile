@@ -7,7 +7,7 @@ pipeline {
                 [key: 'action', value: '$.action']
             ],
             causeString: 'Triggered on $action',
-            token: 'your-token',
+            token: 'gowno',
             printContributedVariables: true,
             printPostContent: true,
             silentResponse: false
