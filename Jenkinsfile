@@ -14,7 +14,6 @@ pipeline {
                     def githubEvent = env.GITHUB_EVENT_NAME
                     if (githubEvent == 'push') {
                         echo 'This is a push event'
-                    
             }
         }
         stage('Build') {
