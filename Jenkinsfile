@@ -20,7 +20,7 @@ pipeline {
         stage('Some step') {
             steps {
                 script {
-                    echo "Triggered on branch: ${payload.ref}"
+                    echo "shiit"
                 }
             }
         }
