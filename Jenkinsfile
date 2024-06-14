@@ -20,7 +20,11 @@ pipeline {
         stage('Some step') {
             steps {
                 script {
+                     sh '''
                     echo "shiit"
+                    echo ref $ref
+                    echo "shiit"
+                    '''
                 }
             }
         }
