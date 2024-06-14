@@ -1,19 +1,26 @@
 pipeline {
     agent any
 
-    
     environment {
         GITHUB_TOKEN = credentials('github_token')
     }
-
     stages {
-        stage('Clone Repository') {
+        stage('Check GitHub Event') {
             steps {
-                
-                 script {
+                script {
                     def githubEvent = env.GITHUB_EVENT_NAME
                     if (githubEvent == 'push') {
                         echo 'This is a push event'
+                    } else {
+                        echo "Unknown GitHub event type: ${githubEvent}"
+                    }
+                }
+            }
+        }
+        stage('Clone Repository') {
+            steps {
+                // Kroki do klonowania repozytorium, jeśli są wymagane
+                sh 'echo Cloning repository...'
             }
         }
         stage('Build') {
@@ -33,4 +40,3 @@ pipeline {
         }
     }
 }
-    }
