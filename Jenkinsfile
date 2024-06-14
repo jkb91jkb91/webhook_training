@@ -17,6 +17,12 @@ pipeline {
         )
     }
     stages {
+        when {
+                // Warunek uniemożliwiający uruchomienie joba
+                expression {
+                    return false
+                }
+            }
         stage('Some step') {
             steps {
                 script {
