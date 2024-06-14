@@ -4,13 +4,13 @@ pipeline {
     environment {
         GITHUB_TOKEN = credentials('github_token')
     }
+    
     stages {
         stage('Check GitHub Event') {
             steps {
                 script {
                     def githubEvent = env.GITHUB_EVENT_NAME
-                    echo ${githubEvent}
-                    }
+                    echo "${githubEvent}"
                 }
             }
         }
