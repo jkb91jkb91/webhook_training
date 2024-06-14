@@ -8,7 +8,11 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                 sh 'echo FFsdsdsdTRIGGERED'
+                 script {
+                    def githubEvent = env.GITHUB_EVENT_NAME
+                    if (githubEvent == 'push') {
+                        echo 'This is a push event'
+                    }
             }
         }
         stage('Build') {
