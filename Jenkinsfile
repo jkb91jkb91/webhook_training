@@ -10,7 +10,7 @@ pipeline {
             token: 'gowno',
             tokenCredentialId: '',
             printContributedVariables: false,
-            printPostContent: false, // Print post content
+            printPostContent: true, // Print post content
             silentResponse: false,
             shouldNotFlatten: false,
             regexpFilterText: '$ref'
@@ -28,7 +28,7 @@ pipeline {
                 script {
                      sh '''
                     echo shiit
-                    echo $payload
+                    echo $.param1
                     echo shiit
                     '''
                 }
