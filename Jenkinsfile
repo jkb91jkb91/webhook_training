@@ -11,6 +11,11 @@ pipeline {
                 script {
                     def githubEvent = env.GITHUB_EVENT_NAME
                     echo "${githubEvent}"
+
+                    def eventName = sh(script: 'echo $GITHUB_EVENT_NAME', returnStdout: true).trim()
+                    def eventAction = sh(script: 'echo $GITHUB_EVENT_ACTION', returnStdout: true).trim()
+                    echo "GitHub Event Name: ${eventName}"
+                    echo "GitHub Event Action: ${eventAction}"
                 }
             }
         }
