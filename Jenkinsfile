@@ -22,7 +22,7 @@ pipeline {
                 script {
                      sh '''
                     echo "shiit"
-                    echo ref $ref
+                    echo ref $payload
                     echo "shiit"
                     '''
                 }
