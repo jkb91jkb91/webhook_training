@@ -17,13 +17,13 @@ pipeline {
         )
     }
     stages {
-        when {
+        stage('Some step') {
+             when {
                 // Warunek uniemożliwiający uruchomienie joba
                 expression {
                     return false
                 }
             }
-        stage('Some step') {
             steps {
                 script {
                      sh '''
