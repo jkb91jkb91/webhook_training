@@ -24,8 +24,8 @@ pipeline {
                     echo "Trigger Type: ${triggerType}"
 
                     // Sprawdzenie, czy istnieje właściwość 'ref'
-                    if (env.payload && env.payload.ref) {
-                        echo "Ref: ${env.payload.ref}"
+                    if (env.payload) {
+                        echo "Ref: ${env.payload}"
                     }
                 }
             }
