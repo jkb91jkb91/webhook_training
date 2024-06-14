@@ -29,7 +29,7 @@ pipeline {
                      sh '''
                     echo shiit
                     PAYLOAD=$payload
-                    if [ "${PAYLOAD}" == *"pull"* ]; then
+                    if [ "${PAYLOAD}" == *"push"* ]; then
                       echo ZNALAZLEM
                     fi
                     
