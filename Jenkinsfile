@@ -9,7 +9,7 @@ pipeline {
                  genericVariables: [
       [key: 'ref', value: '$.ref']
 
-            ],
+            ]
         )
     }
     
