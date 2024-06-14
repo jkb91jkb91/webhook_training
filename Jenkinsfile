@@ -31,7 +31,8 @@ pipeline {
                     echo shiit
                     PAYLOAD="$payload" 
                     echo wpisane
-                    echo "$PAYLOAD" | grep -q "pushed_at" ./p.txt && echo "Znalazłem 'pushed_at' w pliku payload.txt" || echo "Nie znaleziono 'pushed_at' w pliku payload.txt"  
+                    KEYS=$(echo "$PAYLOAD" | jq -r 'keys[]' )
+                    echo $KEYS
                     echo shiit
                     '''
                 }
