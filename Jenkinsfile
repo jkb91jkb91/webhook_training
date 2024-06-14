@@ -13,6 +13,7 @@ pipeline {
                         echo 'This is a push event'
                     } else {
                         echo "Unknown GitHub event type: ${githubEvent}"
+                        
                     }
                 }
             }
