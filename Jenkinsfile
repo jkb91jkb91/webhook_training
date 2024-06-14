@@ -3,7 +3,22 @@ pipeline {
 
 
     
-
+    triggers {
+        GenericTrigger(
+            genericVariables: [
+                [key: 'payload', value: '$.payload'] // Przekazujemy payload jako zmienną
+            ],
+            causeString: 'Triggered on $ref',
+            token: 'abc123',
+            tokenCredentialId: '',
+            printContributedVariables: true,
+            printPostContent: true,
+            silentResponse: false,
+            shouldNotFlatten: false,
+            regexpFilterText: '$ref',
+            regexpFilterExpression: 'refs/heads/' + BRANCH_NAME
+        )
+    }
     
     
     
@@ -11,7 +26,7 @@ pipeline {
         stage('Some step') {
             steps {
                 script {
-                    echo "fgfgf"
+                    echo "Received Payload: ${params.payload}"
                 }
             }
         }
