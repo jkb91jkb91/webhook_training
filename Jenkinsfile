@@ -21,9 +21,9 @@ pipeline {
             steps {
                 script {
                      sh '''
-                    echo "shiit"
-                    echo ref $payload
-                    echo "shiit"
+                    echo shiit
+                    echo $payload
+                    echo shiit
                     '''
                 }
             }
