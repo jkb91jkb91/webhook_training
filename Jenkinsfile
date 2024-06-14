@@ -1,44 +1,30 @@
 pipeline {
     agent any
 
-    environment {
-        GITHUB_TOKEN = credentials('github_token')
+    triggers {
+        GenericTrigger(
+            genericVariables: [
+                [key: 'action', value: '$.action']
+            ],
+            causeString: 'Triggered on $action',
+            token: 'your-token',
+            printContributedVariables: true,
+            printPostContent: true,
+            silentResponse: false
+        )
     }
-    
+
     stages {
-        stage('Check GitHub Event') {
+        stage('Check Trigger Type') {
             steps {
                 script {
-                    def githubEvent = env.GITHUB_EVENT_NAME
-                    echo "${githubEvent}"
+                    // Odczytanie typu wyzwalacza
+                    def triggerType = env.action
 
-                    def eventName = sh(script: 'echo $GITHUB_EVENT_NAME', returnStdout: true).trim()
-                    def eventAction = sh(script: 'echo $GITHUB_EVENT_ACTION', returnStdout: true).trim()
-                    echo "GitHub Event Name: ${eventName}"
-                    echo "GitHub Event Action: ${eventAction}"
+                    echo "Trigger Type: ${triggerType}"
                 }
             }
         }
-        stage('Clone Repository') {
-            steps {
-                // Kroki do klonowania repozytorium, jeśli są wymagane
-                sh 'echo Cloning repository...'
-            }
-        }
-        stage('Build') {
-            steps {
-                sh 'echo Building...'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'echo Testing...'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'echo Deploying...'
-            }
-        }
+        // Reszta stages...
     }
 }
