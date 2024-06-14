@@ -1,30 +1,19 @@
 pipeline {
-    agent any
+  agent any
+  triggers {
+    GenericTrigger(
+     genericVariables: [
+      [key: 'ref', value: '$.ref']
+     ],
 
-    triggers {
-        GenericTrigger(
-            genericVariables: [
-                [key: 'action', value: '$.action']
-            ],
-            causeString: 'Triggered on $action',
-            token: 'your-token',
-            printContributedVariables: true,
-            printPostContent: true,
-            silentResponse: false
-        )
+     causeString: 'Triggered on $ref'
+    )
+  }
+  stages {
+    stage('Some step') {
+      steps {
+        sh "echo $ref"
+      }
     }
-
-    stages {
-        stage('Check Trigger Type') {
-            steps {
-                script {
-                    // Odczytanie typu wyzwalacza
-                    def triggerType = env.action
-
-                    echo "Trigger Type: ${triggerType}"
-                }
-            }
-        }
-        // Pozostałe etapy...
-    }
+  }
 }
