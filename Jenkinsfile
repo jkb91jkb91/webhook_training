@@ -8,6 +8,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
+                
                  script {
                     def githubEvent = env.GITHUB_EVENT_NAME
                     if (githubEvent == 'push') {
