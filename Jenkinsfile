@@ -6,17 +6,7 @@ pipeline {
       [key: 'ref', value: '$.ref']
      ],
 
-     causeString: 'Triggered on $ref',
-
-     token: 'abc123',
-     tokenCredentialId: '',
-
-     printContributedVariables: true,
-     printPostContent: true,
-
-     silentResponse: false,
-     
-     shouldNotFlatten: false,
+     causeString: 'Triggered on $ref'
     )
   }
   stages {
