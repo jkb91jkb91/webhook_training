@@ -8,13 +8,6 @@ pipeline {
             genericVariables: [
                 [key: 'payload', value: '$.payload'] // Przekazujemy payload jako zmienną
             ],
-            causeString: 'Triggered on $ref',
-            tokenCredentialId: '',
-            printContributedVariables: true,
-            printPostContent: true,
-            silentResponse: false,
-            shouldNotFlatten: false,
-            regexpFilterText: '$ref'
         )
     }
     
