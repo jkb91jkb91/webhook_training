@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                 sh 'echo TRIGGERED'
+                 sh 'echo FFsdsdsdTRIGGERED'
             }
         }
         stage('Build') {
