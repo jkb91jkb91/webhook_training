@@ -10,7 +10,7 @@ pipeline {
             token: 'gowno',
             tokenCredentialId: '',
             printContributedVariables: false,
-            printPostContent: true, // Print post content
+            printPostContent: false, // Print post content
             silentResponse: false,
             shouldNotFlatten: false,
             regexpFilterText: '$ref'
@@ -18,12 +18,17 @@ pipeline {
     }
     stages {
         stage('Some step') {
-
+          when {
+                // Warunek uniemożliwiający uruchomienie joba
+                expression {
+                    return false
+                }
+            }
             steps {
                 script {
                      sh '''
                     echo shiit
-                    echo $.param1
+                    echo $payload
                     echo shiit
                     '''
                 }
