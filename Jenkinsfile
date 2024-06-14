@@ -28,7 +28,9 @@ pipeline {
                 script {
                      sh '''
                     echo shiit
-                    echo $payload
+                    PAYLOAD=$payload
+                    [[ "${PAYLOAD}" == *pull* ]] && echo ZNALAZLEM
+                    
                     echo shiit
                     '''
                 }
