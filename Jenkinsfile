@@ -28,9 +28,11 @@ pipeline {
                 script {
                      sh '''
                     echo shiit
-                    PAYLOAD=$payload
+                    PAYLOAD="${payload}"
                     if [ "${PAYLOAD}" == *pushed_at* ]; then
                       echo ZNALAZLEM
+                    else
+                      echo NIE_ZNALAZLEM
                     fi
                     
                     echo shiit
