@@ -28,7 +28,7 @@ pipeline {
                 script {
                      sh '''
                     echo shiit
-                    echo $.param1
+                    echo $payload
                     echo shiit
                     '''
                 }
