@@ -9,8 +9,8 @@ pipeline {
             causeString: 'Triggered on $ref',
             token: 'gowno',
             tokenCredentialId: '',
-            printContributedVariables: true,
-            printPostContent: true, // Print post content
+            printContributedVariables: false,
+            printPostContent: false, // Print post content
             silentResponse: false,
             shouldNotFlatten: false,
             regexpFilterText: '$ref'
@@ -20,9 +20,7 @@ pipeline {
         stage('Some step') {
             steps {
                 script {
-                    // Odczytaj treść żądania (payload) z parametrów
-                    def payloadContent = params.payload
-                    echo "Received Payload: ${payloadContent}"
+                    echo "Triggered on branch: ${payload.ref}"
                 }
             }
         }
