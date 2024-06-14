@@ -6,6 +6,8 @@ pipeline {
       [key: 'ref', value: '$.ref']
      ],
 
+
+      
      causeString: 'Triggered on $ref',
 
      token: 'abc123',
