@@ -9,11 +9,7 @@ pipeline {
             steps {
                 script {
                     def githubEvent = env.GITHUB_EVENT_NAME
-                    if (githubEvent == 'push') {
-                        echo 'This is a push event'
-                    } else {
-                        echo "Unknown GitHub event type: ${githubEvent}"
-                        
+                    echo ${githubEvent}
                     }
                 }
             }
