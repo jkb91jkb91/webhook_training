@@ -29,7 +29,7 @@ pipeline {
                      sh '''
                     echo shiit
                     PAYLOAD="${payload}"
-                    if [ "${PAYLOAD}" == *pushed_at* ]; then
+                    if [ "${PAYLOAD}" == *"pushed_at"* ]; then
                       echo ZNALAZLEM
                     else
                       echo NIE_ZNALAZLEM
