@@ -50,7 +50,6 @@ pipeline {
                       )
 
                       withCredentials([string(credentialsId: 'jenkins_token', variable: 'TOKEN')]) {
-                        echo "TOKEN: ${jenkins_token}"
                         sh """
                             githubApiUrl='https://api.github.com'
                             prNumber='45'
