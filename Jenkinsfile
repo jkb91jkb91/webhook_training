@@ -38,5 +38,18 @@ pipeline {
                 }
             }
         }
+        stage('Deliver') {
+            steps {
+                script {
+                    // Wyświetlenie przycisku do kontynuacji
+                    def userInput = input(
+                        id: 'userInput',
+                        message: 'Czy chcesz kontynuować dostarczanie?',
+                        submitter: 'Kontynuuj'
+                    )
+                    echo "Użytkownik wybrał: ${userInput}"
+                }
+            }
+        }
     }
 }
