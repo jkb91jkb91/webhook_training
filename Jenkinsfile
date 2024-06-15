@@ -40,7 +40,7 @@ pipeline {
                             echo "Pipeline został zatrzymany z powodu specjalnego warunku"
                             exit 1
                         fi
-                        echo $PullRequestNumber > pr_number.txt"
+                        echo $PullRequestNumber > pr_number.txt
                     ''', returnStatus: true) 
                      if (result != 0) {
                         currentBuild.result = 'NOT_BUILT'
