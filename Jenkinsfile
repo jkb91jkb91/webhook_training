@@ -15,7 +15,8 @@ pipeline {
             printPostContent: false, // Print post content
             silentResponse: false,
             shouldNotFlatten: false,
-            regexpFilterText: '$ref'
+            regexpFilterText: '$ref',
+            regexpFilterExpression: 'pull_request\\.opened' 
         )
     }
     stages {
