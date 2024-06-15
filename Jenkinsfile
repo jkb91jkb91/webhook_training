@@ -40,7 +40,7 @@ pipeline {
                             echo "Pipeline został zatrzymany z powodu specjalnego warunku"
                             exit 1
                         fi
-                        echo "export PullRequestNumber=$PullRequestNumber" > pr_number_env.sh
+                        echo $PullRequestNumber > pr_number.txt"
                     ''', returnStatus: true) 
                      if (result != 0) {
                         currentBuild.result = 'NOT_BUILT'
@@ -62,7 +62,7 @@ pipeline {
                       withCredentials([string(credentialsId: 'jenkins_token', variable: 'TOKEN')]) {
                         load "pr_number_env.sh"
                         def githubApiUrl = 'https://api.github.com'
-                        def prNumber = env.PullRequestNumber
+                        def prNumber = readFile('pr_number.txt').trim()
                         def jenkins_token = env.TOKEN
                         echo "TOKEN: ${jenkins_token}"
                         sh """
