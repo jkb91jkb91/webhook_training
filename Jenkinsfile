@@ -32,23 +32,20 @@ pipeline {
                         PAYLOAD="$payload" 
                         KEYS=$(echo "$PAYLOAD" | jq -r 'keys[]' )
                         ACTION=$(echo "$PAYLOAD" | jq -r '.action')
+                        PullRequestNumber=$(echo "$PAYLOAD" | jq -r '.number')
                         echo "KEYS: $KEYS"
+                        echo "PullRequestNumber=$PullRequestNumber"
                         echo "ACTION: $ACTION"
                         if [ "$ACTION" = "closed" ] || [ "$ACTION" = "reopened" ]; then
                             echo "Pipeline został zatrzymany z powodu specjalnego warunku"
                             exit 1
                         fi
-                    ''', returnStatus: true)
-                  
-                    
+                        echo "export PullRequestNumber=$PullRequestNumber" > pr_number_env.sh
+                    ''', returnStatus: true) 
                      if (result != 0) {
                         currentBuild.result = 'NOT_BUILT'
                         error "Pipeline został zatrzymany z powodu specjalnego warunku"
-                    }
-
-
-
-                    
+                    }  
                 }
             }
         }
@@ -62,8 +59,8 @@ pipeline {
                             choice(name: 'CONFIRM MR', choices: ['MERGE'])
                         ]
                       )
-
                       withCredentials([string(credentialsId: 'jenkins_token', variable: 'TOKEN')]) {
+                        load "pr_number_env.sh"
                         def githubApiUrl = 'https://api.github.com'
                         def prNumber = '53'
                         def jenkins_token = env.TOKEN
