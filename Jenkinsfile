@@ -51,7 +51,7 @@ pipeline {
 
                       withCredentials([string(credentialsId: 'jenkins_token', variable: 'TOKEN')]) {
                         def githubApiUrl = 'https://api.github.com'
-                        def prNumber = '46'
+                        def prNumber = '47'
                         def jenkins_token = env.TOKEN
                         echo "TOKEN: ${jenkins_token}"
                         sh """
