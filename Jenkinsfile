@@ -34,7 +34,7 @@ pipeline {
                         ACTION=$(echo "$PAYLOAD" | jq -r '.action')
                         echo "KEYS: $KEYS"
                         echo "ACTION: $ACTION"
-                        if [ "$ACTION" = "closed" ]; then
+                        if [ "$ACTION" = "closed" ] || [ "$ACTION" = "reopened" ]; then
                             echo "Pipeline został zatrzymany z powodu specjalnego warunku"
                             exit 1
                         fi
