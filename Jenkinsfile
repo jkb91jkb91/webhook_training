@@ -42,12 +42,16 @@ pipeline {
             steps {
                 script {
                     // Wyświetlenie przycisku do kontynuacji
-                    def userInput = input(
+                      def userInput = input(
                         id: 'userInput',
                         message: 'Czy chcesz kontynuować dostarczanie?',
-                        submitter: 'Kontynuuj'
+                        parameters: [
+                            choice(name: 'Wybierz akcję', choices: ['Kontynuuj', 'Anuluj'], description: 'Wybierz, co chcesz zrobić')
+                        ]
                     )
                     echo "Użytkownik wybrał: ${userInput}"
+
+                    
                 }
             }
         }
