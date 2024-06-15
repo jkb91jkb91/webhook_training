@@ -37,7 +37,7 @@ pipeline {
                         echo "KEYS: $KEYS"
                         echo "PullRequestNumber=$PullRequestNumber"
                         echo "ACTION: $ACTION"
-                        if [ "$ACTION" = "closed" ] || [ "$ACTION" = "reopened" ]; then
+                        if [ "$ACTION" = "closed" ] || [ "$ACTION" = "reopened" ] || [ "$ACTION" = "synchronize" ]; then
                             echo "Pipeline został zatrzymany z powodu specjalnego warunku"
                             exit 1
                         fi
