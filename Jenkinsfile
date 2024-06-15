@@ -38,20 +38,22 @@ pipeline {
                 }
             }
         }
-        stage('Deliver') {
+        stage('Deliver and MERGE') {
             steps {
                 script {
-                    // Wyświetlenie przycisku do kontynuacji
                       def userInput = input(
                         id: 'userInput',
-                        message: 'Czy chcesz kontynuować dostarczanie?',
+                        message: 'MERGE REUQEST',
                         parameters: [
-                            choice(name: 'Wybierz akcję', choices: ['Kontynuuj', 'Anuluj'], description: 'Wybierz, co chcesz zrobić')
+                            choice(name: 'CONFIRM MR', choices: ['MERGE'])
                         ]
-                    )
-                    echo "Użytkownik wybrał: ${userInput}"
-
-                    
+                      )
+                      sh '''
+                         githubApiUrl='https://api.github.com'
+                         prNumber='38'
+                         githubToken='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'
+                        curl -X PUT -u "jkb91jkb91:${githubToken}" ${githubApiUrl}/repos/jkb91jkb91/webhook_training/pulls/${prNumber}/merge
+                      '''
                 }
             }
         }
