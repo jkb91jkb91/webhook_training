@@ -53,7 +53,7 @@ pipeline {
                         def jenkins_token = env.GITHUB_TOKEN
                         sh '''
                             githubApiUrl='https://api.github.com'
-                            prNumber='39'
+                            prNumber='41'
                             curl -X PUT -u "jkb91jkb91:${jenkins_token}" ${githubApiUrl}/repos/jkb91jkb91/webhook_training/pulls/${prNumber}/merge
                         '''
                     }
