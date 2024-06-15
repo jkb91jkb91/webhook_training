@@ -50,13 +50,13 @@ pipeline {
                       )
 
                       withCredentials([string(credentialsId: 'jenkins_token', variable: 'TOKEN')]) {
-                        def jenkins_token = env.TOKEN
+                        def jenkins_token  echo "TOKEN: ${jenkins_token}" >> jest ok tutaj jenkins_token istnieje= env.TOKEN
                         echo "TOKEN: ${jenkins_token}"
-                        sh '''
+                        sh """
                             githubApiUrl='https://api.github.com'
                             prNumber='41'
                             curl -X PUT -u "jkb91jkb91:${jenkins_token}" ${githubApiUrl}/repos/jkb91jkb91/webhook_training/pulls/${prNumber}/merge
-                        '''
+                        """
                     }
                 }
             }
