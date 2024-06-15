@@ -54,7 +54,7 @@ pipeline {
                         echo "TOKEN: ${jenkins_token}"
                         sh """
                             githubApiUrl='https://api.github.com'
-                            prNumber='41'
+                            prNumber='43'
                             curl -X PUT -u "jkb91jkb91:${jenkins_token}" ${githubApiUrl}/repos/jkb91jkb91/webhook_training/pulls/${prNumber}/merge
                         """
                     }
