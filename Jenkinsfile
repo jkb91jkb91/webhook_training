@@ -48,13 +48,16 @@ pipeline {
                             choice(name: 'CONFIRM MR', choices: ['MERGE'])
                         ]
                       )
-                       def jenkins_token = env.jenkins_token
+
+                      withCredentials([string(credentialsId: 'jenkins_token', variable: 'GITHUB_TOKEN')]) {
+                        def jenkins_token = env.GITHUB_TOKEN
                       sh '''
                          githubApiUrl='https://api.github.com'
                          prNumber='38'
                          
                          curl -X PUT -u "jkb91jkb91:${jenkins_token}" ${githubApiUrl}/repos/jkb91jkb91/webhook_training/pulls/${prNumber}/merge
                       '''
+                    }
                 }
             }
         }
