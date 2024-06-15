@@ -27,16 +27,28 @@ pipeline {
         //    }
             steps {
                 script {
-                     sh '''
-                    echo shiit
-                    PAYLOAD="$payload" 
-                    echo wpisane
-                    KEYS=$(echo "$PAYLOAD" | jq -r 'keys[]' )
-                    ACTION=$(echo "$PAYLOAD" | jq -r '.action')
-                    echo $KEYS
-                    echo $ACTION
-                    echo shiit
-                    '''
+                    def result 
+                    result = sh(script: '''
+                        PAYLOAD="$payload" 
+                        KEYS=$(echo "$PAYLOAD" | jq -r 'keys[]' )
+                        ACTION=$(echo "$PAYLOAD" | jq -r '.action')
+                        echo "KEYS: $KEYS"
+                        echo "ACTION: $ACTION"
+                        if [ "$ACTION" = "closed" ]; then
+                            echo "Pipeline został zatrzymany z powodu specjalnego warunku"
+                            exit 1
+                        fi
+                    ''', returnStatus: true)
+                  
+                    
+                     if (result != 0) {
+                        currentBuild.result = 'NOT_BUILT'
+                        error "Pipeline został zatrzymany z powodu specjalnego warunku"
+                    }
+
+
+
+                    
                 }
             }
         }
