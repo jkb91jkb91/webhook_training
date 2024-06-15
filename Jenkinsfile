@@ -29,6 +29,7 @@ pipeline {
                 script {
                     def result 
                     result = sh(script: '''
+                        echo CHUJ
                         PAYLOAD="$payload" 
                         KEYS=$(echo "$PAYLOAD" | jq -r 'keys[]' )
                         ACTION=$(echo "$PAYLOAD" | jq -r '.action')
