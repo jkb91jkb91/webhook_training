@@ -32,7 +32,7 @@ pipeline {
                     PAYLOAD="$payload" 
                     echo wpisane
                     KEYS=$(echo "$PAYLOAD" | jq -r 'keys[]' )
-                    ACTION=$(echo "$PAYLOAD" | jq -r '.actions')
+                    ACTION=$(echo "$PAYLOAD" | jq -r '.action')
                     echo $KEYS
                     echo $ACTION
                     echo shiit
