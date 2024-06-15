@@ -29,7 +29,7 @@ pipeline {
                 script {
                     def result 
                     result = sh(script: '''
-                        echo CHUJ
+                        
                         PAYLOAD="$payload" 
                         KEYS=$(echo "$PAYLOAD" | jq -r 'keys[]' )
                         ACTION=$(echo "$PAYLOAD" | jq -r '.action')
@@ -62,7 +62,7 @@ pipeline {
                       )
                       withCredentials([string(credentialsId: 'jenkins_token', variable: 'TOKEN')]) {
                         def githubApiUrl = 'https://api.github.com'
-                       // def prNumber = readFile('pr_number.txt').trim()
+                        def prNumber = readFile('pr_number.txt').trim()
                         def jenkins_token = env.TOKEN
                         echo "TOKEN: ${jenkins_token}"
                         sh """
