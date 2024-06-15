@@ -16,7 +16,7 @@ pipeline {
             silentResponse: false,
             shouldNotFlatten: false,
             regexpFilterText: '$ref',
-            regexpFilterExpression: 'pull_request\\.opened' 
+            regexpFilterExpression: 'opened' 
         )
     }
     stages {
