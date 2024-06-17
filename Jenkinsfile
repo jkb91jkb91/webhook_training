@@ -1,7 +1,5 @@
 pipeline {
     agent any
-
-    
     triggers {
         GenericTrigger(
             genericVariables: [
@@ -11,24 +9,18 @@ pipeline {
             token: 'gowno',
             tokenCredentialId: '',
             printContributedVariables: false,
-            printPostContent: false, // Print post content
+            printPostContent: false,
             silentResponse: false,
             shouldNotFlatten: false,
             regexpFilterText: '$ref'
         )
     }
     stages {
-        stage('Some step') {
-         // when {
-        //        expression {
-        //            return false
-        //        }
-        //    }
+        stage('WEBHOOK PAYLOAD') {
             steps {
                 script {
                     def result 
                     result = sh(script: '''
-                        
                         PAYLOAD="$payload" 
                         KEYS=$(echo "$PAYLOAD" | jq -r 'keys[]' )
                         ACTION=$(echo "$PAYLOAD" | jq -r '.action')
@@ -49,7 +41,28 @@ pipeline {
                 }
             }
         }
-        stage('Deliver and MERGE') {
+        stage('GET REPO') {
+            steps {
+                script {
+                        ///DOCKER HAS TO BE INSTALLED HERE
+                }  
+            }
+        }
+        stage('SONARQUBE') {
+            steps {
+                script {
+                        ///DOCKER HAS TO BE INSTALLED HERE
+                }  
+            }
+        }
+        stage('DOCKER BUILD ') {
+            steps {
+                script {
+                        ///DOCKER HAS TO BE INSTALLED HERE
+                }  
+             }
+        }
+        stage('SEND DOCKER IMAGE TO REPO and MERGE CODE TO GITHUB') {
             steps {
                 script {
                       def userInput = input(
