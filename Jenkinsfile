@@ -41,27 +41,27 @@ pipeline {
                 }
             }
         }
-        stage('GET REPO') {
-            steps {
-                script {
+       // stage('GET REPO') {
+       //     steps {
+       //         script {
                         ///DOCKER HAS TO BE INSTALLED HERE
-                }  
-            }
-        }
-        stage('SONARQUBE') {
-            steps {
-                script {
+       //         }  
+       //     }
+       // }
+       // stage('SONARQUBE') {
+       //     steps {
+       //         script {
                         ///DOCKER HAS TO BE INSTALLED HERE
-                }  
-            }
-        }
-        stage('DOCKER BUILD ') {
-            steps {
-                script {
+       //         }  
+       //     }
+       // }
+       // stage('DOCKER BUILD ') {
+       //     steps {
+       //         script {
                         ///DOCKER HAS TO BE INSTALLED HERE
-                }  
-             }
-        }
+       //         }  
+       //      }
+       // }
         stage('SEND DOCKER IMAGE TO REPO and MERGE CODE TO GITHUB') {
             steps {
                 script {
