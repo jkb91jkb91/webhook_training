@@ -1,4 +1,4 @@
-pipeline {
+opipeline {
     agent any
     triggers {
         GenericTrigger(
@@ -43,9 +43,7 @@ pipeline {
         }
         stage('GET REPO') {
             steps {
-                script {
-                        ///DOCKER HAS TO BE INSTALLED HERE
-                }  
+                echo "STAGE REPO"  
             }
         }
        // stage('SONARQUBE') {
