@@ -41,13 +41,13 @@ pipeline {
                 }
             }
         }
-       // stage('GET REPO') {
-       //     steps {
-       //         script {
+        stage('GET REPO') {
+            steps {
+                script {
                         ///DOCKER HAS TO BE INSTALLED HERE
-       //         }  
-       //     }
-       // }
+                }  
+            }
+        }
        // stage('SONARQUBE') {
        //     steps {
        //         script {
